@@ -1,5 +1,8 @@
+from typing import Any
+
+
 class Person:
-    people = {}
+    people: dict[str, "Person"] = {}
 
     def __init__(self, name: str, age: int) -> None:
         self.name = name
@@ -7,7 +10,9 @@ class Person:
         Person.people[name] = self
 
 
-def create_person_list(people_data: list[dict]) -> list[Person]:
+def create_person_list(
+    people_data: list[dict[str, Any]]
+) -> list[Person]:
     person_list = [
         Person(person["name"], person["age"])
         for person in people_data
